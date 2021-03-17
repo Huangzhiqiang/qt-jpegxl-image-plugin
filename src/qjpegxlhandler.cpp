@@ -169,7 +169,7 @@ bool QJpegXLHandler::ensureDecoder()
         return false;
     }
 
-    if (m_basicinfo.xsize > 32768 || m_basicinfo.ysize > 32768) {
+    if (m_basicinfo.xsize > 1073741824 || m_basicinfo.ysize > 1073741824) {
         qWarning("JXL image (%dx%d) is too large", m_basicinfo.xsize, m_basicinfo.ysize);
         m_parseState = ParseJpegXLError;
         return false;
@@ -356,7 +356,7 @@ bool QJpegXLHandler::write(const QImage &image)
         return false;
     }
 
-    if ((image.width() > 32768) || (image.height() > 32768)) {
+    if ((image.width() > 1073741824) || (image.height() > 1073741824)) {
         qWarning("Image is too large");
         return false;
     }
